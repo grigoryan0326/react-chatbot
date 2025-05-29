@@ -1,0 +1,320 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  --dark-blue: rgba(2, 0, 36, 1);
+  --blue: rgba(1, 121, 161, 1);
+  --light-blue: rgba(0, 212, 255, 1);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background: #020024;
+  background: linear-gradient(
+    270deg,
+    var(--dark-blue) 0%,
+    var(--blue) 57%,
+    var(--light-blue) 100%
+  );
+  color: white;
+}
+
+#chatbot-toggler {
+  position: fixed;
+  bottom: 20px;
+  right: 35px;
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  span {
+    position: absolute;
+    color: #fff;
+  }
+  &:hover {
+    background: var(--light-blue);
+  }
+}
+
+.chatbot-popup {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+  width: 90vw;
+  height: 90vh;
+  background-color: rgb(102, 157, 194);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* header */
+  .chat-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(
+      90deg,
+      var(--dark-blue) 0%,
+      var(--blue) 57%,
+      var(--light-blue) 100%
+    );
+    border-bottom: 1px solid var(--light-blue);
+    .header-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      svg {
+        flex-shrink: 0;
+        height: 40px;
+        width: 40px;
+        padding: 6px;
+        border-radius: 50%;
+        background-color: white;
+        fill: var(--dark-blue);
+      }
+      .logo-text {
+        font-weight: 500;
+        font-size: 1.3em;
+        span {
+          font-size: 1.4em;
+          color: gold;
+          font-weight: 700;
+        }
+      }
+    }
+    button {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--blue);
+      }
+    }
+  }
+  /* body */
+  .chat-body {
+    padding: 25px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 90px;
+    background: var(--blue);
+    background: linear-gradient(
+      90deg,
+      var(--dark-blue) 0%,
+      var(--blue) 57%,
+      var(--light-blue) 100%
+    );
+    scrollbar-width: thin;
+    scrollbar-color: rgb(28, 109, 134) transparent;
+    .message {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      color: black;
+      svg {
+        flex-shrink: 0;
+        height: 40px;
+        width: 40px;
+        padding: 6px;
+        border-radius: 50%;
+        background-color: rgba(196, 221, 226, 0.5);
+        fill: white;
+      }
+      .message-text {
+        padding: 15px;
+        max-width: 75%;
+        word-wrap: break-word;
+        line-height: 1.5;
+      }
+      &.error .message-text{
+        color: red;
+        background-color: rgb(0, 0, 0);
+      }
+    }
+    .bot-message .message-text {
+      background-color: rgba(196, 221, 226, 0.5);
+      border-radius: 30px 30px 30px 3px;
+    }
+    .user-message {
+      flex-direction: row-reverse;
+    }
+    .user-message .message-text {
+      border-radius: 30px 30px 0px 30px;
+      background-color: rgba(1, 121, 161, 0.5);
+      align-self: flex-end;
+      color: white;
+    }
+  }
+  /* footer */
+  .chat-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      var(--dark-blue) 0%,
+      var(--blue) 57%,
+      var(--light-blue) 100%
+    );
+    padding: 20px;
+    border-top: 1px solid var(--light-blue);
+    .chat-form {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--light-blue);
+      border-radius: 30px;
+      &:focus-within {
+        border: 1px solid white;
+      }
+      .message-input {
+        border: none;
+        outline: none;
+        background: none;
+        padding: 0 20px;
+        width: 100%;
+        height: 50px;
+        color: white;
+        &:valid ~ button {
+          display: flex;
+        }
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+      button {
+        height: 40px;
+        width: 40px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(28, 109, 134);
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        display: none;
+
+        margin-right: 6px;
+        &:hover {
+          background-color: rgb(19, 75, 92);
+        }
+      }
+    }
+  }
+}
+
+.container.show-chatbot .chatbot-popup {
+  opacity: 1;
+  pointer-events: auto;
+}
