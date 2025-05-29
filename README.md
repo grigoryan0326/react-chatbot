@@ -1,12 +1,31 @@
-# React + Vite
+# React Chatbot 🤖
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple AI-powered chatbot built with **React** and powered by **Gemini 2.0 Flash** — a fast and lightweight language model by Google.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🧠 Intelligent assistant powered by Gemini 2.0 Flash
+- ⚡️ Fast response generation
+- 💬 Chat interface built with React
+- 🧩 Easy to customize and integrate
+- 📱 Responsive design
 
-## Expanding the ESLint configuration
+## 🚀 Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React (Vite/CRA)
+- Gemini 2.0 Flash API
+- CSS
+- Fetch for API requests
+
+## 📸 Preview
+
+![image](https://github.com/user-attachments/assets/58b977d5-5a68-4543-b0a2-b8ffabaf8f67)
+
+
+## 🛠 Installation
+
+```bash
+git clone https://github.com/your-username/react-chatbot.git
+cd react-chatbot
+npm install
+npm run dev
